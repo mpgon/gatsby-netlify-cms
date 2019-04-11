@@ -11,6 +11,12 @@ collections:
     folder: "src/pages/faq"
     create: true
     fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "faq",
+        }
       - { label: "Question", name: "title", widget: "string" }
       - { label: "Answer", name: "answer", widget: "markdown" }
 
