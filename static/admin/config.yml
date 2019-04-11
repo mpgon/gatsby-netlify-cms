@@ -11,7 +11,7 @@ collections:
     folder: "src/pages/faq"
     create: true
     fields:
-      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Question", name: "title", widget: "string" }
       - { label: "Answer", name: "answer", widget: "markdown" }
 
   - name: "blog"
