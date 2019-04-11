@@ -17,8 +17,8 @@ export function FAQ({ question, answer }) {
 
 function FAQTemplate({ data }) {
   const { markdownRemark: faq } = data;
-  const { title, answer } = faq.frontmatter;
-  return <FAQ question={title} answer={answer} />;
+  const { question, answer } = faq.frontmatter;
+  return <FAQ question={question} answer={answer} />;
 }
 
 export const pageQuery = graphql`
@@ -27,7 +27,7 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        title
+        question
         answer
       }
     }
