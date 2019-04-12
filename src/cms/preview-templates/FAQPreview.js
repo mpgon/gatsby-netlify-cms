@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FAQ } from "../../templates/faq";
+import FAQ from "../../components/FAQ";
 
 const FAQPreview = ({ entry, widgetFor }) => {
-  const question = entry.getIn(["data", "question"]) || "";
-  const answer = entry.getIn(["data", "answer"]) || "";
+  const question = entry.getIn(["data", "question"]);
+  const answer = widgetFor("body");
 
-  return <FAQ question={question} answer={answer} />;
+  return <FAQ question={question} answer={answer} isPreview />;
 };
 
 FAQPreview.propTypes = {

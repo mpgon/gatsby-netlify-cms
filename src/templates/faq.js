@@ -1,23 +1,10 @@
 import React from "react";
-
-export function FAQ({ question, answer }) {
-  return (
-    <div>
-      <h1>
-        <b>Question: </b>
-        {question}
-      </h1>
-      <h1>
-        <b>Answer: </b>
-        {answer}
-      </h1>
-    </div>
-  );
-}
+import FAQ from "../components/FAQ";
 
 function FAQTemplate({ data }) {
   const { markdownRemark: faq } = data;
-  const { question, answer } = faq.frontmatter;
+  const { question } = faq.frontmatter;
+  const answer = faq.html;
   return <FAQ question={question} answer={answer} />;
 }
 
@@ -28,7 +15,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         question
-        answer
       }
     }
   }

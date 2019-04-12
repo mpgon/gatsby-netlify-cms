@@ -1,21 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, graphql, StaticQuery } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
+import FAQ from "./FAQ";
 
 function FAQs({ data }) {
   const { edges: faqs } = data.allMarkdownRemark;
   return (
     <div>
-      {faqs.map(({ node: { id, frontmatter: { question, answer } } }) => (
+      {faqs.map(({ node: { id, html, frontmatter: { question } } }) => (
         <div key={id}>
-          <h1>
-            <b>Question: </b>
-            {question}
-          </h1>
-          <h1>
-            <b>Answer: </b>
-            {answer}
-          </h1>
+          <FAQ question={question} answer={html} />
         </div>
       ))}
     </div>
@@ -42,9 +36,9 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
+              html
               frontmatter {
                 question
-                answer
               }
             }
           }
