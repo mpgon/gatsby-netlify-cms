@@ -1,10 +1,42 @@
-import React from "react";
-
-import Layout from "../../components/Layout";
+import React, { useState, useLayoutEffect } from "react";
 import FAQs from "../../components/FAQs";
+import request from "superagent";
 
-export default class FAQIndexPage extends React.Component {
-  render() {
-    return <FAQs />;
+export default function FAQIndexPage() {
+  const [error, setError] = useState(false);
+  const [logged, setLogged] = useState(false);
+
+  function receiveMessage(event) {
+    console.log("receiveMessage", event);
+    if (event && event.data && event.data.account && event.data.token) {
+      const { account, token } = event.data;
+      request(
+        "GET",
+        `https://api-staging.recaresolutions.com/accounts/${account}`,
+      )
+        .set("Accept", "*/*")
+        .set("Authorization", `Bearer ${token}`)
+        .then(response => {
+          console.log("response ", response);
+          setLogged(true);
+          setError(false);
+        })
+        .catch(error => {
+          console.log("error ", error);
+          setLogged(false);
+          setError(true);
+        });
+    }
   }
+
+  useLayoutEffect(() => {
+    window.addEventListener("message", receiveMessage, false);
+    window.parent.postMessage("faq ready", "*");
+  }, []);
+
+  if (error) return "error";
+
+  if (!logged) return "Waiting for token";
+
+  return <FAQs />;
 }
