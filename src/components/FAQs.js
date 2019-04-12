@@ -8,7 +8,7 @@ function FAQs({ data }) {
   return (
     <div>
       {faqs.map(({ node: { id, html, frontmatter: { question } } }) => (
-        <div key={id}>
+        <div key={id} style={{ margin: "50px 100px 0px 100px" }}>
           <FAQ question={question} answer={html} />
         </div>
       ))}
@@ -29,7 +29,7 @@ export default () => (
     query={graphql`
       query FAQsQuery {
         allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___question] }
+          sort: { order: ASC, fields: [frontmatter___question] }
           filter: { frontmatter: { templateKey: { eq: "faq" } } }
         ) {
           edges {

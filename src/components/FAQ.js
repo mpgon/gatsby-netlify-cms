@@ -5,13 +5,7 @@ export default function FAQ({ question, answer, isPreview }) {
   const AnswerComponent = isPreview ? Content : HTMLContent;
   return (
     <div>
-      <h1>
-        <b>Question: </b>
-        {question}
-      </h1>
-      <h1>
-        <b>Answer: </b>
-      </h1>
+      <p>{` =============== ${question} =============== `}</p>
       <AnswerComponent content={answer} />
     </div>
   );
