@@ -2,9 +2,9 @@
 for = "/static/*"
 [headers.values]
 Cache-Control = "public, max-age=360000"
-X-Frame-Options = "*"
+X-Frame-Options = "sameorigin"
 
 [[headers]]
 for = "/*"
 [headers.values]
-X-Frame-Options = "*"
+X-Frame-Options = "sameorigin"
