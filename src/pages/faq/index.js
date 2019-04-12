@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from "react";
 import FAQs from "../../components/FAQs";
-import request from "superagent";
+import axios from "axios";
 
 export default function FAQIndexPage() {
   const [error, setError] = useState(false);
@@ -10,12 +10,10 @@ export default function FAQIndexPage() {
     console.log("receiveMessage", event);
     if (event && event.data && event.data.account && event.data.token) {
       const { account, token } = event.data;
-      request(
-        "GET",
-        `https://api-staging.recaresolutions.com/accounts/${account}`,
-      )
-        .set("Accept", "*/*")
-        .set("Authorization", `Bearer ${token}`)
+      axios
+        .get(`https://api-staging.recaresolutions.com/accounts/${account}`, {
+          headers: { Accept: "*/*", Authorization: `Bearer ${token}` },
+        })
         .then(response => {
           console.log("response ", response);
           setLogged(true);
