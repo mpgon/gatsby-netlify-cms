@@ -1,9 +1,9 @@
 ---
 templateKey: faq
-question: First question with tags
+question: How to do x when creating a Care patient?
 tags:
-  - geriatrics
+  - care
 ---
-**First paragraph of answer in bold.**
+First paragraph explaining how to do x when creating a Care patient.
 
-_Second paragraph in italic._
+Second paragraph expanding on how to do x when creating a Care patient.
