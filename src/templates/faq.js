@@ -1,6 +1,7 @@
 import React from "react";
 import FAQ from "../components/FAQ";
 import Layout from "../components/Layout";
+import { graphql } from "gatsby";
 
 function FAQTemplate({ data }) {
   const { markdownRemark: faq } = data;
