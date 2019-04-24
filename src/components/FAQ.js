@@ -3,13 +3,12 @@ import Content, { HTMLContent } from "./Content";
 import { kebabCase } from "lodash";
 import { Link } from "gatsby";
 
-export default function FAQ({ question, answer, tags, isPreview }) {
+export default function FAQ({ question, answer, tags = [], isPreview }) {
   const AnswerComponent = isPreview ? Content : HTMLContent;
   return (
     <div>
-      <p>{` =============== ${question} =============== `}</p>
-      <AnswerComponent content={answer} />
-      <p>Tags</p>
+      {question && <p>{`Q> ${question}`}</p>}
+      {answer && <AnswerComponent content={answer} />}
       <ul className="taglist">
         {tags.map(tag => (
           <li key={tag}>

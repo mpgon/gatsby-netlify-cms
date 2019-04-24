@@ -5,8 +5,9 @@ import FAQ from "../../components/FAQ";
 const FAQPreview = ({ entry, widgetFor }) => {
   const question = entry.getIn(["data", "question"]);
   const answer = widgetFor("body");
+  const tags = entry.getIn(["data", "tags"]);
 
-  return <FAQ question={question} answer={answer} isPreview />;
+  return <FAQ question={question} answer={answer} tags={tags} isPreview />;
 };
 
 FAQPreview.propTypes = {
