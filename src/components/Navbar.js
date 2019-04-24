@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
+import Button from "@material-ui/core/Button";
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -44,7 +45,9 @@ const Navbar = class extends React.Component {
           </div>
           <div id="navMenu">
             <div>
-              <Link to="/faq">back to FAQ</Link>
+              <Button color="secondary" onClick={() => navigate("/faq")}>
+                {`<- FAQ`}
+              </Button>
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { Link, graphql } from "gatsby";
+import { Link, navigate, graphql } from "gatsby";
 import Layout from "../components/Layout";
+import Button from "@material-ui/core/Button";
 
 class TagRoute extends React.Component {
   render() {
@@ -29,9 +30,13 @@ class TagRoute extends React.Component {
               <div style={{ marginBottom: "6rem" }}>
                 <h3>{tagHeader}</h3>
                 <ul>{faqLinks}</ul>
-                <p>
-                  <Link to="/tags/">Browse all tags</Link>
-                </p>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => navigate("/tags/")}
+                >
+                  Browse all tags
+                </Button>
               </div>
             </div>
           </div>
