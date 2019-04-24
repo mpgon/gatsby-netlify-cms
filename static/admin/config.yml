@@ -20,6 +20,13 @@ collections:
         }
       - { label: "Question", name: "question", widget: "string" }
       - { label: "Answer", name: "body", widget: "markdown" }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "select",
+          options: ["care", "geriatrics", "mobile care"],
+          multiple: true,
+        }
 
   - name: "blog"
     label: "Blog"

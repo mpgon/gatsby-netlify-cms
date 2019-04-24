@@ -3,9 +3,9 @@ import FAQ from "../components/FAQ";
 
 function FAQTemplate({ data }) {
   const { markdownRemark: faq } = data;
-  const { question } = faq.frontmatter;
+  const { question, tags } = faq.frontmatter;
   const answer = faq.html;
-  return <FAQ question={question} answer={answer} />;
+  return <FAQ question={question} answer={answer} tags={tags} />;
 }
 
 export const pageQuery = graphql`
@@ -15,6 +15,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         question
+        tags
       }
     }
   }

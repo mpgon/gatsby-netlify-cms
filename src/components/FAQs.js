@@ -7,9 +7,9 @@ function FAQs({ data }) {
   const { edges: faqs } = data.allMarkdownRemark;
   return (
     <div>
-      {faqs.map(({ node: { id, html, frontmatter: { question } } }) => (
+      {faqs.map(({ node: { id, html, frontmatter: { question, tags } } }) => (
         <div key={id} style={{ margin: "50px 100px 0px 100px" }}>
-          <FAQ question={question} answer={html} />
+          <FAQ question={question} answer={html} tags={tags} />
         </div>
       ))}
     </div>
@@ -39,6 +39,7 @@ export default () => (
               html
               frontmatter {
                 question
+                tags
               }
             }
           }
