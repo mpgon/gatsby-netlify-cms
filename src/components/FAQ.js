@@ -1,20 +1,26 @@
 import React from "react";
 import Content, { HTMLContent } from "./Content";
 import { kebabCase } from "lodash";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import happyFace from "../img/happy-face.svg";
 import sadFace from "../img/sad-face.svg";
+import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
 
 export default function FAQ({ question, answer, tags = [], isPreview }) {
   const AnswerComponent = isPreview ? Content : HTMLContent;
   return (
     <div>
-      {question && <p>{`Q> ${question}`}</p>}
+      {question && <Typography variant="h4">{question}</Typography>}
       {answer && <AnswerComponent content={answer} />}
-      <ul>
+      <ul style={{ listStyle: "none" }}>
         {tags.map(tag => (
           <li key={tag}>
-            <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+            <Chip
+              label={tag}
+              variant="outlined"
+              onClick={() => navigate(`/tags/${kebabCase(tag)}/`)}
+            />
           </li>
         ))}
       </ul>

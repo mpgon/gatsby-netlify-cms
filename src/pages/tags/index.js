@@ -1,8 +1,9 @@
 import React from "react";
 import { kebabCase } from "lodash";
 import Helmet from "react-helmet";
-import { Link, graphql } from "gatsby";
+import { navigate, graphql } from "gatsby";
 import Layout from "../../components/Layout";
+import Chip from "@material-ui/core/Chip";
 
 const TagsPage = ({
   data: {
@@ -19,12 +20,16 @@ const TagsPage = ({
         <div>
           <div style={{ marginBottom: "6rem" }}>
             <h1>Tags</h1>
-            <ul>
+            <ul style={{ listStyle: "none" }}>
               {group.map(tag => (
                 <li key={tag.fieldValue}>
-                  <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </Link>
+                  <Chip
+                    label={`${tag.fieldValue} (${tag.totalCount})`}
+                    variant="outlined"
+                    onClick={() =>
+                      navigate(`/tags/${kebabCase(tag.fieldValue)}/`)
+                    }
+                  />
                 </li>
               ))}
             </ul>
