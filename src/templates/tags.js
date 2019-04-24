@@ -9,7 +9,7 @@ class TagRoute extends React.Component {
     const faqLinks = faqs.map(faq => (
       <li key={faq.node.fields.slug}>
         <Link to={faq.node.fields.slug}>
-          <h2 className="is-size-2">{faq.node.frontmatter.question}</h2>
+          <h2>{faq.node.frontmatter.question}</h2>
         </Link>
       </li>
     ));
@@ -22,16 +22,13 @@ class TagRoute extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
+        <section>
           <Helmet title={`${tag} | ${title}`} />
-          <div className="container content">
-            <div className="columns">
-              <div
-                className="column is-10 is-offset-1"
-                style={{ marginBottom: "6rem" }}
-              >
-                <h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
-                <ul className="taglist">{faqLinks}</ul>
+          <div>
+            <div>
+              <div style={{ marginBottom: "6rem" }}>
+                <h3>{tagHeader}</h3>
+                <ul>{faqLinks}</ul>
                 <p>
                   <Link to="/tags/">Browse all tags</Link>
                 </p>
@@ -55,7 +52,7 @@ export const tagPageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 1000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { order: ASC, fields: [frontmatter___question] }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
