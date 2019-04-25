@@ -2,6 +2,8 @@ import React from "react";
 import Helmet from "react-helmet";
 import Navbar from "../components/Navbar";
 import useSiteMetadata from "./SiteMetadata";
+import LoginProvider from "./LoginProvider";
+import Route from "./Route";
 import "./base.css";
 
 const TemplateWrapper = ({ children }) => {
@@ -49,4 +51,12 @@ const TemplateWrapper = ({ children }) => {
   );
 };
 
-export default TemplateWrapper;
+const ContextProvider = ({ children }) => (
+  <LoginProvider>
+    <Route>
+      <TemplateWrapper>{children}</TemplateWrapper>
+    </Route>
+  </LoginProvider>
+);
+
+export default ContextProvider;
