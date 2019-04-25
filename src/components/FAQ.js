@@ -28,14 +28,14 @@ export default function FAQ({ question, answer, tags = [], isPreview }) {
         <img
           src={happyFace}
           alt="helpful"
-          onClick={() => window.parent.postMessage("positive feedback")}
+          onClick={() => window.parent.postMessage("positive feedback", "*")}
         />
       </span>
       <span style={{ cursor: "pointer" }}>
         <img
           src={sadFace}
           alt="unhelpful"
-          onClick={() => window.parent.postMessage("negative feedback")}
+          onClick={() => window.parent.postMessage("negative feedback", "*")}
         />
       </span>
     </div>
