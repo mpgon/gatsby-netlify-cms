@@ -24,11 +24,19 @@ export default function FAQ({ question, answer, tags = [], isPreview }) {
           </li>
         ))}
       </ul>
-      <span>
-        <img src={happyFace} alt="helpful" />
+      <span style={{ cursor: "pointer" }}>
+        <img
+          src={happyFace}
+          alt="helpful"
+          onClick={() => window.parent.postMessage("positive feedback")}
+        />
       </span>
-      <span>
-        <img src={sadFace} alt="unhelpful" />
+      <span style={{ cursor: "pointer" }}>
+        <img
+          src={sadFace}
+          alt="unhelpful"
+          onClick={() => window.parent.postMessage("negative feedback")}
+        />
       </span>
     </div>
   );
